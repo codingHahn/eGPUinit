@@ -13,8 +13,7 @@ if lspci | grep NVIDIA && $egpu = 1 ; then
       echo "NVIDIA Config Created"
       rename /etc/X11/xorg.conf /etc/X11/xorg.conf.backup.intel /etc/X11/xorg.conf
       rename /etc/X11/xorg.conf.nvidia /etc/X11/xorg.conf /etc/X11/xorg.conf.nvidia
-      echo "Restarting xServer"
-      systemctl restart lightdm.service
+      echo "Please restart xServer"
 
     fi
 
@@ -28,9 +27,7 @@ read input
   echo "Switching to igpu"
   rename /etc/X11/xorg.conf /etc/X11/xorg.conf.nvidia /etc/X11/xorg.conf
   rename /etc/X11/xorg.conf.backup.intel /etc/X11/xorg.conf /etc/X11/xorg.conf.backup.intel
-  echo "Restarting xServer"
-  systemctl restart lightdm.service
-
+  echo "Please restart xServer"
   if [ $input = 0 ] ; then
     exit
 
